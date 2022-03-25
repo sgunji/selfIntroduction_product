@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>詳細画面</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<h2>ユーザー情報詳細</h2>
+		<div th:object="${userData}">
+			<div class="row mx-md-n5">
+				<div class="col-2 pt-3 border bg-light">名前</div>
+				<div class="col pt-3 border">
+					<p th:text="*{name}"></p>
+				</div>
+			</div>
+			<div class="row mx-md-n5">
+				<div class="col-2 pt-3 border bg-light">年齢</div>
+				<div class="col pt-3 border">
+					<p th:text="*{age}"></p>
+				</div>
+			</div>
+			<div class="row mx-md-n5">
+				<div class="col-2 pt-3 border bg-light">性別</div>
+				<div class="col pt-3 border">
+					<p th:text="*{gender}"></p>
+				</div>
+			</div>
+			<div class="row mx-md-n5">
+				<div class="col-2 pt-3 border bg-light">住所</div>
+				<div class="col pt-3 border">
+					<p th:text="*{address}"></p>
+				</div>
+			</div>
+			<div class="row mx-md-n5">
+				<div class="col-2 pt-3 border bg-light">趣味</div>
+				<div class="col pt-3 border">
+					<p th:text="*{hobby}"></p>
+				</div>
+			</div>
+			<div class="row mx-md-n5">
+				<div class="col-2 pt-3 border bg-light">自己紹介</div>
+				<div class="col pt-3 border">
+					<p th:text="*{introduction}"></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br />
+	<div class="text-center">
+		<a th:href="@{/user/{id}/edit(id=*{id})}" class="btn btn-primary">
+			編集 </a> <a th:href="@{/user/{id}/delete(id=*{id})}"
+			class="delete-action btn btn-secondary"> 削除 </a> <a href="/user/userList"
+			class="btn btn-secondary">一覧に戻る</a> <a th:href="@{/user/{id}/pdfDownload(id=*{id})}"
+			class="btn btn btn-success"> PDFダウンロード </a>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script type="text/javascript" th:src="@{/js/dialog.js}"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+		integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+		integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+		crossorigin="anonymous"></script>
+
+</body>
+</html>

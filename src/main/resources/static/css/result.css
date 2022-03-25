@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+table {
+	width: 350px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+table, td, th {
+	border: 1px #808080 solid;
+}
+
+th {
+	width: 70px;
+	background-color: #e0ffff;
+}
+
+td {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.back {
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.list {
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-evenly;
+}

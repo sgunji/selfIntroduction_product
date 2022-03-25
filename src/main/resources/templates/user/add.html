@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<title>ユーザー新規登録</title>
+<head
+	th:replace="common/head :: head_fragment(title = 'ユーザー新規登録', scripts = ~{::script}, links = ~{::link})">
+</head>
+<body>
+	<div class="container">
+		<h2>ユーザー新規登録</h2>
+		<form th:action="@{/user/create}" th:object="${userRequest}"
+			method="post" onsubmit="return checkInput()">
+			<div class="form-group form-inline input-group-sm">
+				<table class="table table-striped table-bordered">
+					<tr>
+						<th>名前</th>
+						<td><input name="name" type="text" th:field="*{name}"></td>
+					</tr>
+					<tr>
+						<th>年齢</th>
+						<td><select name="age " th:field="*{age}">
+						<script>
+							var i;
+
+							for (i = 18; i < 65; i += 1) {
+								document.write('<option value="'+i+'">' + i
+										+ '</option>');
+							}
+						</script>
+
+						</select></td>
+					</tr>
+					<tr>
+						<th>性別</th>
+						<td><input name="gender" type="radio" value="男性" checked>男性<input
+							name="gender" type="radio" value="女性">女性</td>
+					</tr>
+					<tr>
+						<th>住所</th>
+						<td><select name="pref">
+								<option th:each="prefectures : ${prefecturesList}"
+									th:value="${prefectures.id}" th:text="${prefectures.name}"
+									th:selected="${prefectures.id == selectedValue}"></option>
+						</select>
+							<div class="name"
+								th:classappend="${#fields.hasErrors('address')} ? 'has-error'">
+								<textarea name="address" id="address" cols="40" rows="1"
+									th:field="*{address}"></textarea>
+							</div></td>
+					</tr>
+					<tr>
+						<th>趣味</th>
+						<td><input name="hobby" type="checkbox" value="映画鑑賞">映画鑑賞
+							<input name="hobby" type="checkbox" value="読書">読書 <input
+							name="hobby" type="checkbox" value="買い物">買い物</td>
+					</tr>
+					<tr>
+						<th>自己紹介</th>
+						<td><textarea name="introduction" cols="80" rows="8"></textarea></td>
+					</tr>
+				</table>
+			</div>
+			<input type="submit" value="登録" name="submit"
+				class="register-action btn btn-sm btn-outline-secondary"> <input
+				type="reset" value="クリア" name="reset"
+				class="btn btn-sm btn-outline-secondary">
+			<div class="float-end">
+				<a th:href="@{/user/userList}" class="btn btn-primary">登録一覧</a>
+			</div>
+		</form>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script type="text/javascript" th:src="@{/js/addCheck.js}"></script>
+	<script type="text/javascript" th:src="@{/js/dialog.js}"></script>
+</body>
+</html>
